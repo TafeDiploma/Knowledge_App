@@ -35,6 +35,12 @@ QString utils::readFile(const QString& directory)
 	return val;
 }
 
+/// <summary>
+/// Method to read binary file from location directory passed,
+/// and return all text within.
+/// </summary>
+/// <param name="dir"></param>
+/// <returns>All text within file as string</returns>
 QString utils::readBinaryFile(const QString& dir)
 {
 	// TODO: Make this better.
