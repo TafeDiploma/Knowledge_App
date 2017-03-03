@@ -55,6 +55,12 @@ QString utils::readBinaryFile(const QString& dir)
 	return output;
 }
 
+/// <summary>
+/// Method to compare QJsonObject by hash value with
+/// the index of the string value passed.
+/// </summary>
+/// <param name="hashIndex"></param>
+/// <returns></returns>
 utils::myStruct utils::compareQJsonObjectBy(const QString& hashIndex)
 {
 	myStruct s;
