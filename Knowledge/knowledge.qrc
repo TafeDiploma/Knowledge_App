@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/Knowledge">
+        <file>Q&amp;A.json</file>
+    </qresource>
+</RCC>

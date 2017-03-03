@@ -1,0 +1,117 @@
+[
+	{
+		"title": "This is the batch title2",
+		"description": "This is the batch description2",
+		"questions":
+		[
+			{
+				"title": "dynamic variables",
+				"description": "this is a description",
+				"question": "<p>Describe in detail dynamic variables</p>",
+				"answer": "<p>In programming, a dynamic variable is a variable whose
+									address is determined when the program is run. In contrast, a
+									static variable has memory reserved for it at compilation time.</p>"
+			},
+			{
+				"title": "medium-size application development",
+				"description": "this is a description",
+				"question": "<p>describe in detail medium-size application development</p>",
+				"answer": "<p>This is a answer</p>"
+			},
+			{
+				"title": "standard array algorithm",
+				"description": "this is a description",
+				"question": "<p>describe in detail standard array algorithm</p>",
+				"answer": "<p>A standard array</p>
+									<p>This is a C-Style array
+									'<code><font color='blue'>int</font> a[10]</code>'<br></p>"
+			},
+			{
+				"title": "file handling algorithm",
+				"description": "this is a description",
+				"question": "<p>describe in detail file handling algorithm</p>",
+				"answer": "<p>This is a answer</p>"
+			},
+			{
+				"title": "user-defined data structures ",
+				"description": "this is a description",
+				"question": "describe in detail user-defined data structures",
+				"answer": "This is a answer"
+			},
+			{
+				"title": "describe two development methodologies and their application",
+				"description": "this is a description",
+				"question": "describe two development methodologies and their application",
+				"answer": "This is a answer"
+			},
+			{
+				"title": "outline the principles of language development",
+				"description": "this is a description",
+				"question": "outline the principles of language development.",
+				"answer": "This is a answer"
+			},
+			{
+				"title": "outline the basic principles of project management",
+				"description": "this is a description",
+				"question": "outline the basic principles of project management.",
+				"answer": "This is a answer"
+			},
+			{
+				"title": "describe the key features of the software development life cycle (SDLC)",
+				"description": "this is a description",
+				"question": "describe the key features of the software development life cycle (SDLC)",
+				"answer": "This is a answer"
+			},
+			{
+				"title": "describe the importance of software specifications",
+				"description": "this is a description",
+				"question": "describe the importance of software specifications",
+				"answer": "This is a answer"
+			},
+			{
+				"title": "identify the methods and importance of version control",
+				"description": "this is a description",
+				"question": "identify the methods and importance of version control",
+				"answer": "This is a answer"
+			}
+		]
+	},
+	{
+		"title": "This is the batch title",
+		"description": "This is the batch description",
+		"questions":
+		[
+			{
+				"title": "this is a title",
+				"description": "this is a description",
+				"question": "this is a question",
+				"answer": "This is a answer"
+			},
+			{
+				"title": "this is a title2",
+				"description": "this is a description2",
+				"question": "this is a question2",
+				"answer": "This is a answer2"
+			}
+		]
+	},
+	{
+		"title": "This is the batch title3",
+		"description": "This is the batch description3",
+		"questions":
+		[
+			{
+				"title": "this is a title",
+				"description": "this is a description",
+				"question": "this is a question",
+				"answer": "This is a answer"
+			},
+			{
+				"title": "this is a title2",
+				"description": "this is a description2",
+				"question": "this is a question2",
+				"answer": "This is a answer2"
+			}
+		]
+	}
+]
