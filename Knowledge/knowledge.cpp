@@ -14,10 +14,8 @@
 #include <QtAlgorithms>
 #include <QCloseEvent>
 #include <QListWidget>
+#include <fstream>
 
-/// <summary>
-/// Knowledge class constuctor.
-/// </summary>
 Knowledge::Knowledge(QWidget *parent)
 	: QMainWindow(parent)
 {
@@ -83,12 +81,13 @@ Knowledge::Knowledge(QWidget *parent)
 	connect(ui.questionListView->selectionModel(),
 		SIGNAL(selectionChanged(QItemSelection, QItemSelection)),
 		this, SLOT(on_questionListView_SelectionChanged(QItemSelection)));
+
+	// Creating and deleting dynamic char array,
+	// just incase.
+	char* dynCharArr = new char[10];
+	delete[] dynCharArr;
 }
 
-/// <summary>
-/// batch list view selection changed event method.
-/// </summary>
-/// <param name="selection"></param>
 void Knowledge::on_batchListView_SelectionChanged(const QItemSelection& selection)
 {
 	const size_t bIndex = currentBatches[ui.batchListView->currentIndex().row()][0].bIndex;
@@ -97,13 +96,8 @@ void Knowledge::on_batchListView_SelectionChanged(const QItemSelection& selectio
 	if (questions[bIndex].empty())
 		return;
 
-	this->questionModel->setStringList(QStringList());
-	ui.questionSearchLineEdit->clear();
-	ui.questionBSearchLineEdit->clear();
-	ui.questionNumberLineEdit->clear();
-	ui.questionNumberOutOfLineEdit->clear();
-	ui.quesitonTextEdit->clear();
-	ui.answerTextEdit->clear();
+	// Clearing question views
+	clearQuestionViews();
 
 	currentQuestions.clear();
 	currentQuestions.resize(questions[bIndex].length());
@@ -114,7 +108,6 @@ void Knowledge::on_batchListView_SelectionChanged(const QItemSelection& selectio
 		List << questions[bIndex][index]["title"].toString();
 	questionModel->setStringList(List);
 
-	// TODO: Find away to implement index changed event on listviews.
 	// Getting index 0 of question model and setting it in question list view.
 	ui.questionListView->selectionModel()->select(questionModel->index(0, 0), QItemSelectionModel::Select);
 
@@ -122,43 +115,32 @@ void Knowledge::on_batchListView_SelectionChanged(const QItemSelection& selectio
 	changeQuestion(bIndex, 0);
 }
 
-/// <summary>
-/// Question list view selection changed event method.
-/// </summary>
-/// <param name="selection"></param>
 void Knowledge::on_questionListView_SelectionChanged(const QItemSelection & selection)
 {
+	if (!ui.questionListView->currentIndex().isValid())
+		return;
+	if (ui.batchListView->currentIndex().row() == SIZE_MAX)
+		return;
+
 	const size_t qIndex = ui.questionListView->currentIndex().row();
 
 	if (qIndex == SIZE_MAX)
 		return;
 
-	// TODO: A better implementation away to get elements corosponding to index of array of questions.
 	changeQuestion(ui.batchListView->currentIndex().row(), qIndex);
 }
 
-/// <summary>
-/// Knowledge class deconstuctor.
-/// </summary>
 Knowledge::~Knowledge()
 {
 	delete batchModel;
 	delete questionModel;
-	// TODO: delete.
 }
 
-/// <summary>
-/// Action exit triggered event method.
-/// </summary>
 void Knowledge::on_actionExit_Triggered()
 {
 	this->close();
 }
 
-/// <summary>
-///	Batch search line edit text changed event method.
-/// </summary>
-/// <param name="value"></param>
 void Knowledge::on_batchSearchLineEdit_TextChanged(const QString& value)
 {
 	currentBatches.clear();
@@ -166,7 +148,7 @@ void Knowledge::on_batchSearchLineEdit_TextChanged(const QString& value)
 	QStringList List;
 	for (size_t index = 0; index < batches.count(); index++)
 	{
-		if (value.isEmpty())
+		if (value.isEmpty()) // If binary search line edit is empty.
 		{
 			List << batches[index].title;
 			currentBatches.push_back(&batches[index]);
@@ -175,16 +157,13 @@ void Knowledge::on_batchSearchLineEdit_TextChanged(const QString& value)
 		{
 			List << batches[index].title;
 			currentBatches.push_back(&batches[index]);
+			clearQuestionViews();
 		}
 	}
 
 	batchModel->setStringList(List);
 }
 
-/// <summary>
-///	Question search line edit text changed event method.
-/// </summary>
-/// <param name="value"></param>
 void Knowledge::on_quesitonSearchLineEdit_TextChanged(const QString& value)
 {
 	// Error checking.
@@ -202,7 +181,7 @@ void Knowledge::on_quesitonSearchLineEdit_TextChanged(const QString& value)
 	QStringList List;
 	for (size_t index = 0; index < questions[bIndex].count(); index++)
 	{
-		if (value.isEmpty())
+		if (value.isEmpty()) // If question search line edit is empty.
 		{
 			List << questions[bIndex][index]["title"].toString();
 			currentQuestions.push_back(&questions[bIndex][index]);
@@ -216,16 +195,14 @@ void Knowledge::on_quesitonSearchLineEdit_TextChanged(const QString& value)
 	questionModel->setStringList(List);
 }
 
-/// <summary>
-/// Batch binary search line edit text changed event method.
-/// </summary>
-/// <param name="value"></param>
 void Knowledge::on_batchBSearchLineEdit_TextChanged(const QString& value)
 {
 	currentBatches.clear();
 
 	QStringList List;
 	size_t bSize = 0;
+
+	// Binary searching batches and output results.
 	std::pair<utils::QuestionBatch*, utils::QuestionBatch*> p = std::equal_range(batches.begin(), batches.end(), value, utils::CompQuestionBatchByTitleBSearch());
 	for (auto i = p.first; i != p.second; ++i)
 	{
@@ -233,13 +210,14 @@ void Knowledge::on_batchBSearchLineEdit_TextChanged(const QString& value)
 		bSize++;
 	}
 
-	if (!List.empty())
+	if (!List.empty()) // If anything found after binary search.
 	{
 		currentBatches.resize(bSize);
 		utils::copyOverReference(p.first, p.second, currentBatches);
 		batchModel->setStringList(List);
+		clearQuestionViews();
 	}
-	else
+	else // If nothing found after binary search.
 	{
 		for (size_t index = 0; index < batches.count(); index++)
 		{
@@ -250,10 +228,6 @@ void Knowledge::on_batchBSearchLineEdit_TextChanged(const QString& value)
 	}
 }
 
-/// <summary>
-/// Question binary search line edit text changed event method.
-/// </summary>
-/// <param name="value"></param>
 void Knowledge::on_quesitonBSearchLineEdit_TextChanged(const QString& value)
 {
 	// Error checking
@@ -270,21 +244,23 @@ void Knowledge::on_quesitonBSearchLineEdit_TextChanged(const QString& value)
 
 	QStringList List;
 	size_t qSize = 0;
+
+	// Binary searching questions and output results.
 	std::pair<QJsonObject*, QJsonObject*> p = std::equal_range(questions[bIndex].begin(),
-		questions[bIndex].end(), value, utils::CompQJsonObjectByTitle());
+		questions[bIndex].end(), value, utils::CompQJsonObjectToStringByTitle());
 	for (auto i = p.first; i != p.second; ++i)
 	{
 		List << i->value("title").toString();
 		qSize++;
 	}
 
-	if (!List.empty())
+	if (!List.empty()) // If anything found after binary search.
 	{
 		currentQuestions.resize(qSize);
 		utils::copyOverReference(p.first, p.second, currentQuestions);
 		questionModel->setStringList(List);
 	}
-	else
+	else // If nothing found after binary search.
 	{
 		for (size_t index = 0; index < questions[bIndex].count(); index++)
 		{
@@ -296,9 +272,6 @@ void Knowledge::on_quesitonBSearchLineEdit_TextChanged(const QString& value)
 	
 }
 
-/// <summary>
-/// Back push button clicked event method.
-/// </summary>
 void Knowledge::on_testCustomQuickSortPushButton_Clicked()
 {
 	int numberArray[] =
@@ -331,28 +304,31 @@ void Knowledge::on_testCustomQuickSortPushButton_Clicked()
 		"change"
 	};
 
+	// Pushing unsorted all elements of int array into string.
 	QString output = "<b>Unsorted int array:</b><br>";
-
 	for each (int var in numberArray)
 		output.push_back((QString::number(var)) + ", ");
 
+	// Sorting int array and pushing it into string.
 	utils::quickSort(std::begin(numberArray), std::end(numberArray));
 	output.push_back("<br><b>Sorted int array:</b><br>");
-
 	for each (int var in numberArray)
 		output.push_back((QString::number(var)) + ", ");
 
 	output.push_back("<br>");
 
+	// Pushing unsorted all elements of string array into string.
 	output.push_back("<br><b>Unsorted QString array:</b><br>");
 	for each (QString var in stringArray)
 		output.push_back((var) + ", ");
 
+	// Sorting string array and pushing it into string.
 	utils::quickSort(std::begin(stringArray), std::end(stringArray));
 	output.push_back("<br><b>Sorted QString array:</b><br>");
 	for each (QString var in stringArray)
 		output.push_back((var)+", ");
 
+	// Output into message box.
 	QMessageBox msgBox("Sorting Arrays",
 		"<p>" + output + "</p>",
 		QMessageBox::Question,
@@ -393,24 +369,28 @@ void Knowledge::on_testCustomBinarySearchPushButton_Clicked()
 		"brainy",
 		"change"
 	};
-
+	
+	// Sorting number and string arrays.
 	utils::quickSort(std::begin(numberArray), std::end(numberArray));
 	utils::quickSort(std::begin(stringArray), std::end(stringArray));
+
+	// Binary searching number and string arrays.
 	int* returnNumber = utils::binarySearch(std::begin(numberArray), std::end(numberArray), 555);
 	QString* returnString = utils::binarySearch(std::begin(stringArray), std::end(stringArray), "brainy");
 
+	// Pushing the results of the binary search for int array into QString.
 	QString output = "<b>Binary Search Int Array:</b><br>";
 	for each (int var in numberArray)
 		output.push_back((QString::number(var)) + ", ");
 	output.push_back("<br><b>Searched Value: </b><br>" + QString::number(*returnNumber));
 
-	// TODO: implement search line edit box.
-
+	// Pushing the results of the binary search for string array into QString.
 	output.push_back("<br><br><b>Binary Search QString Array:</b><br>");
 	for each (auto var in stringArray)
 		output.push_back((var) + ", ");
 	output.push_back("<br><b>Searched Value: </b><br>" + (*returnString));
 
+	// Output into message box.
 	QMessageBox msgBox("Binary Searching Arrays",
 		"<p>" + output + "</p>",
 		QMessageBox::Question,
@@ -424,6 +404,7 @@ void Knowledge::on_manipulate2DArray_Clicked()
 {
 	QString output;
 
+	// Creating and maniplulating 2D standard C-Style array.
 	const size_t x = 10, y = 10;
 	QString arr[y][x];
 	for (size_t yIndex = 0; yIndex < (sizeof(arr) / sizeof(arr[0])); yIndex++)
@@ -437,6 +418,7 @@ void Knowledge::on_manipulate2DArray_Clicked()
 		output.push_back("<br>");
 	}
 
+	// Output into message box.
 	QMessageBox msgBox("Manipulated 2D Array",
 		"<p>" + output + "</p>",
 		QMessageBox::Question,
@@ -448,7 +430,24 @@ void Knowledge::on_manipulate2DArray_Clicked()
 
 void Knowledge::on_writeReadBinaryFile_Clicked()
 {
-	QString output = utils::readBinaryFile("binaryFile.bin");
+	QString output;
+	
+	// Reading from precreated file.
+	QString readFile = utils::readBinaryFile("binaryFile.bin");
+	output.push_back("<b>Reading binary file</b><br>");
+	output.push_back(readFile);
+
+	// Creating/Overriding and writing and reading from file.
+	utils::writeBinaryFile("binaryWriteFile.bin", readFile);
+	output.push_back("<br><b>Reading binary file writen</b><br>");
+	output.push_back(utils::readBinaryFile("binaryWriteFile.bin"));
+
+	// Accessing binaryFile.bin using random algorithms.
+	output.push_back("<br><b>Reading binary file using random algorithms</b><br>");
+	output.push_back("<b>from 21 bytes from beg: </b>" + utils::accessFileRandomly("binaryFile.bin", 21));
+	output.push_back("<br><b>from -3 bytes from end: </b>" + utils::accessFileRandomly("binaryFile.bin", -3, std::ifstream::end));
+
+	// Output into message box.
 	QMessageBox msgBox("Read/Writeing binary File",
 		"<p>" + output + "</p>",
 		QMessageBox::Question,
@@ -458,15 +457,6 @@ void Knowledge::on_writeReadBinaryFile_Clicked()
 	msgBox.exec();
 }
 
-void Knowledge::on_randomAccessHandling_Clicked()
-{
-}
-
-/// <summary>
-/// Change question method.
-/// </summary>
-/// <param name="bIndex"></param>
-/// <param name="qIndex"></param>
 void Knowledge::changeQuestion(const size_t& bIndex, const size_t& qIndex)
 {
 	// Display batch information.
@@ -482,12 +472,20 @@ void Knowledge::changeQuestion(const size_t& bIndex, const size_t& qIndex)
 	ui.answerTextEdit->setText(currentQuestions[qIndex][0]["answer"].toString());
 }
 
-/// <summary>
-/// Close event method.
-/// </summary>
-/// <param name="event"></param>
+void Knowledge::clearQuestionViews()
+{
+	this->questionModel->setStringList(QStringList());
+	ui.questionSearchLineEdit->clear();
+	ui.questionBSearchLineEdit->clear();
+	ui.questionNumberLineEdit->clear();
+	ui.questionNumberOutOfLineEdit->clear();
+	ui.quesitonTextEdit->clear();
+	ui.answerTextEdit->clear();
+}
+
 void Knowledge::closeEvent(QCloseEvent* event)
 {
+	// Show conformation message box.
 	QMessageBox msgBox("Warning",
 		"Are you sure?",
 		QMessageBox::Warning,

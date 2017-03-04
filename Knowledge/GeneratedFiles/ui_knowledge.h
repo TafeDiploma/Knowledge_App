@@ -71,7 +71,6 @@ public:
     QLabel *label;
     QLineEdit *batchTitleLineEdit;
     QPushButton *pushButton_3;
-    QPushButton *pushButton_5;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QStatusBar *statusBar;
@@ -80,8 +79,9 @@ public:
     {
         if (KnowledgeClass->objectName().isEmpty())
             KnowledgeClass->setObjectName(QStringLiteral("KnowledgeClass"));
-        KnowledgeClass->resize(561, 697);
-        KnowledgeClass->setMinimumSize(QSize(561, 502));
+        KnowledgeClass->resize(561, 622);
+        KnowledgeClass->setMinimumSize(QSize(561, 622));
+        KnowledgeClass->setMaximumSize(QSize(561, 622));
         actionExit = new QAction(KnowledgeClass);
         actionExit->setObjectName(QStringLiteral("actionExit"));
         centralWidget = new QWidget(KnowledgeClass);
@@ -231,10 +231,7 @@ public:
         batchTitleLineEdit->setReadOnly(true);
         pushButton_3 = new QPushButton(centralWidget);
         pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
-        pushButton_3->setGeometry(QRect(110, 550, 161, 23));
-        pushButton_5 = new QPushButton(centralWidget);
-        pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
-        pushButton_5->setGeometry(QRect(290, 550, 161, 23));
+        pushButton_3->setGeometry(QRect(10, 550, 541, 23));
         KnowledgeClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(KnowledgeClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -261,7 +258,6 @@ public:
         QObject::connect(pushButton, SIGNAL(clicked()), KnowledgeClass, SLOT(on_testCustomBinarySearchPushButton_Clicked()));
         QObject::connect(pushButton_2, SIGNAL(clicked()), KnowledgeClass, SLOT(on_manipulate2DArray_Clicked()));
         QObject::connect(pushButton_3, SIGNAL(clicked()), KnowledgeClass, SLOT(on_writeReadBinaryFile_Clicked()));
-        QObject::connect(pushButton_5, SIGNAL(clicked()), KnowledgeClass, SLOT(on_randomAccessHandling_Clicked()));
 
         QMetaObject::connectSlotsByName(KnowledgeClass);
     } // setupUi
@@ -287,8 +283,7 @@ public:
         label_8->setText(QApplication::translate("KnowledgeClass", "Binary Search:", Q_NULLPTR));
         groupBox_6->setTitle(QApplication::translate("KnowledgeClass", "Quesiton Batch", Q_NULLPTR));
         label->setText(QApplication::translate("KnowledgeClass", "Batch title:", Q_NULLPTR));
-        pushButton_3->setText(QApplication::translate("KnowledgeClass", "Write Read from binary file", Q_NULLPTR));
-        pushButton_5->setText(QApplication::translate("KnowledgeClass", "Random access handling", Q_NULLPTR));
+        pushButton_3->setText(QApplication::translate("KnowledgeClass", "Write Read from binary file using random-access algorithms", Q_NULLPTR));
         menuFile->setTitle(QApplication::translate("KnowledgeClass", "File", Q_NULLPTR));
     } // retranslateUi
 

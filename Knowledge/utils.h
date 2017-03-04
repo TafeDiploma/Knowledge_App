@@ -7,7 +7,10 @@
 class utils
 {
 private:
-	struct myStruct
+	/// <summary>
+	/// Compare QJsonObject by struct.
+	/// </summary>
+	struct CompQJsonObjectBy
 	{
 		QString hashIndex;
 		bool operator() (const QJsonObject& lhs, const QJsonObject& rhs)
@@ -18,7 +21,7 @@ private:
 
 public:
 	/// <summary>
-	/// Object variables.
+	/// Question batch object.
 	/// </summary>
 	struct QuestionBatch
 	{
@@ -27,6 +30,9 @@ public:
 		size_t bIndex;
 	};
 
+	/// <summary>
+	/// Compare Question batch object by title struct.
+	/// </summary>
 	struct CompQuestionBatchByTitle
 	{
 		bool operator() (const utils::QuestionBatch& lhs, const utils::QuestionBatch& rhs)
@@ -35,6 +41,10 @@ public:
 		}
 	};
 
+	/// <summary>
+	/// Compare Question batch object by title struct.
+	/// For binary search.
+	/// </summary>
 	struct CompQuestionBatchByTitleBSearch
 	{
 		bool operator() (const QString& s, const utils::QuestionBatch& i)
@@ -48,7 +58,11 @@ public:
 		}
 	};
 
-	struct CompQJsonObjectByTitle
+	/// <summary>
+	/// Compare QJSonObject to string by title struct.
+	/// For binary search.
+	/// </summary>
+	struct CompQJsonObjectToStringByTitle
 	{
 		bool operator() (const QString& s, const QJsonObject& i)
 		{
@@ -61,8 +75,59 @@ public:
 		}
 	};
 
+	/// <summary>
+	///	Read file method.
+	/// </summary>
 	static QString readFile(const QString& directory);
 
+	/// <summary>
+	/// Method to read binary file from location directory passed.
+	/// </summary>
+	/// <param name="dir"></param>
+	/// <returns>All text within file as string</returns>
+	static QString readBinaryFile(const QString& dir);
+
+	/// <summary>
+	/// Method to write binary file from location directory passed.
+	/// </summary>
+	/// <param name="dir"></param>
+	/// <param name="text"></param>
+	/// <returns>Bool if error produced.</returns>
+	static bool writeBinaryFile(const QString& dir, const QString& text);
+
+	/// <summary>
+	/// Method to access file randomly.
+	/// </summary>
+	/// <param name="dir"></param>
+	/// <param name="pos"></param>
+	/// <param name="way"></param>
+	/// <returns></returns>
+	static QString accessFileRandomly(const QString& dir, const size_t& pos, const int& way);
+
+	/// <summary>
+	/// Method to access file randomly with only directory and position.
+	/// </summary>
+	/// <param name="dir"></param>
+	/// <param name="pos"></param>
+	/// <param name="way"></param>
+	/// <returns></returns>
+	static QString accessFileRandomly(const QString& dir, const size_t& pos);
+
+	/// <summary>
+	/// Check if file exists within directory passed.
+	/// </summary>
+	/// <param name="name"></param>
+	/// <returns>Bool if file exits.</returns>
+	static bool fileExists(const QString& name);
+
+	/// <summary>
+	/// Method to compare QJsonObject by hash value with
+	/// the index of the string value passed.
+	/// </summary>
+	/// <param name="hashIndex"></param>
+	/// <returns></returns>
+	static CompQJsonObjectBy compareQJsonObjectBy(const QString& hashIndex);
+	
 	/// <summary>
 	/// Quicksort algorithm method.
 	/// </summary>
@@ -125,8 +190,6 @@ public:
 		return nullptr;
 	}
 
-	static QString readBinaryFile(const QString& dir);
-
 	/// <summary>
 	/// Print all elements of simple array method.
 	/// </summary>
@@ -176,9 +239,6 @@ public:
 			index++;
 		}
 	};
-
-	static myStruct compareQJsonObjectBy(const QString& hashIndex);
-
 private:
 };
 

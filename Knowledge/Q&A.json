@@ -1,6 +1,6 @@
 [
 	{
-		"title": "This is the batch title2",
+		"title": "Andrew's Questions",
 		"description": "This is the batch description2",
 		"questions":
 		[
@@ -73,44 +73,6 @@
 				"description": "this is a description",
 				"question": "identify the methods and importance of version control",
 				"answer": "This is a answer"
-			}
-		]
-	},
-	{
-		"title": "This is the batch title",
-		"description": "This is the batch description",
-		"questions":
-		[
-			{
-				"title": "this is a title",
-				"description": "this is a description",
-				"question": "this is a question",
-				"answer": "This is a answer"
-			},
-			{
-				"title": "this is a title2",
-				"description": "this is a description2",
-				"question": "this is a question2",
-				"answer": "This is a answer2"
-			}
-		]
-	},
-	{
-		"title": "This is the batch title3",
-		"description": "This is the batch description3",
-		"questions":
-		[
-			{
-				"title": "this is a title",
-				"description": "this is a description",
-				"question": "this is a question",
-				"answer": "This is a answer"
-			},
-			{
-				"title": "this is a title2",
-				"description": "this is a description2",
-				"question": "this is a question2",
-				"answer": "This is a answer2"
 			}
 		]
 	}

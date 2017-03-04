@@ -7,13 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>561</width>
-    <height>697</height>
+    <height>622</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>561</width>
-    <height>502</height>
+    <height>622</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>561</width>
+    <height>622</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -412,27 +418,14 @@
    <widget class="QPushButton" name="pushButton_3">
     <property name="geometry">
      <rect>
-      <x>110</x>
+      <x>10</x>
       <y>550</y>
-      <width>161</width>
+      <width>541</width>
       <height>23</height>
      </rect>
     </property>
     <property name="text">
-     <string>Write Read from binary file</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_5">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>550</y>
-      <width>161</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Random access handling</string>
+     <string>Write Read from binary file using random-access algorithms</string>
     </property>
    </widget>
   </widget>
@@ -611,22 +604,6 @@
     <hint type="destinationlabel">
      <x>153</x>
      <y>609</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_5</sender>
-   <signal>clicked()</signal>
-   <receiver>KnowledgeClass</receiver>
-   <slot>on_randomAccessHandling_Clicked()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>423</x>
-     <y>586</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>447</x>
-     <y>615</y>
     </hint>
    </hints>
   </connection>

@@ -57,24 +57,86 @@ private:
 	/// Vector of pointers to current batchs.
 	/// </summary>
 	QVector<utils::QuestionBatch*> currentBatches;
-
+	
+	/// <summary>
+	/// Change question method.
+	/// </summary>
+	/// <param name="bIndex"></param>
+	/// <param name="qIndex"></param>
 	void changeQuestion(const size_t &bIndex, const size_t &qIndex);	
 
+	/// <summary>
+	/// Clear question views method.
+	/// </summary>
+	void clearQuestionViews();
+
 protected slots:
+	/// <summary>
+	/// Action exit triggered event method.
+	/// </summary>
 	void on_actionExit_Triggered();
+
+	/// <summary>
+	///	Batch search line edit text changed event method.
+	/// </summary>
+	/// <param name="value"></param>
 	void on_batchSearchLineEdit_TextChanged(const QString& value);
+
+	/// <summary>
+	///	Question search line edit text changed event method.
+	/// </summary>
+	/// <param name="value"></param>
 	void on_quesitonSearchLineEdit_TextChanged(const QString& value);
+
+	/// <summary>
+	/// Batch binary search line edit text changed event method.
+	/// </summary>
+	/// <param name="value"></param>
 	void on_batchBSearchLineEdit_TextChanged(const QString& value);
+
+	/// <summary>
+	/// Question binary search line edit text changed event method.
+	/// </summary>
+	/// <param name="value"></param>
 	void on_quesitonBSearchLineEdit_TextChanged(const QString& value);
+
+	/// <summary>
+	/// Test custom quick sort push button clicked event method.
+	/// </summary>
 	void on_testCustomQuickSortPushButton_Clicked();
+
+	/// <summary>
+	/// Test custom binary search push button clicked event method.
+	/// </summary>
 	void on_testCustomBinarySearchPushButton_Clicked();
+
+	/// <summary>
+	/// Manipulate 2D array push button clicked event method.
+	/// </summary>
 	void on_manipulate2DArray_Clicked();
+
+	/// <summary>
+	/// Write read binary file push button clicked event method.
+	/// </summary>
 	void on_writeReadBinaryFile_Clicked();
-	void on_randomAccessHandling_Clicked();
+
+	/// <summary>
+	/// Close event method.
+	/// </summary>
+	/// <param name="event"></param>
 	void closeEvent(QCloseEvent* event);
 
 private slots:
+	/// <summary>
+	/// batch list view selection changed event method.
+	/// </summary>
+	/// <param name="selection"></param>
 	void on_batchListView_SelectionChanged(const QItemSelection& selection);
+
+	/// <summary>
+	/// Question list view selection changed event method.
+	/// </summary>
+	/// <param name="selection"></param>
 	void on_questionListView_SelectionChanged(const QItemSelection& selection);
 };
 
