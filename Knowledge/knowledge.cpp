@@ -85,6 +85,7 @@ Knowledge::Knowledge(QWidget *parent)
 	// Creating and deleting dynamic char array,
 	// just incase.
 	char* dynCharArr = new char[10];
+	dynCharArr[9] = '\0';
 	delete[] dynCharArr;
 }
 

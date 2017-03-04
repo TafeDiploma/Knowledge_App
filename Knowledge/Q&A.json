@@ -1,78 +1,163 @@
 [
 	{
 		"title": "Andrew's Questions",
-		"description": "This is the batch description2",
+		"description": "These are the questions that andrew requested.",
 		"questions":
 		[
 			{
-				"title": "dynamic variables",
-				"description": "this is a description",
+				"title": "Dynamic variables",
+				"description": "This is a description in detail of a dynamic variable",
 				"question": "<p>Describe in detail dynamic variables</p>",
-				"answer": "<p>In programming, a dynamic variable is a variable whose
-									address is determined when the program is run. In contrast, a
-									static variable has memory reserved for it at compilation time.</p>"
+				"answer": "<p>Dynamic variable is a variable which the address is determined
+									during runtime. Unlike a static variable which the memory for
+									it is reserved at compilation time.</p>
+									<p>This is a dynamic variable in C++ <br>
+									<code><font color='blue'>int</font>* arr = new
+									<font color='blue'>int</font>[10];</code><br></p>"
 			},
 			{
-				"title": "medium-size application development",
-				"description": "this is a description",
-				"question": "<p>describe in detail medium-size application development</p>",
-				"answer": "<p>This is a answer</p>"
+				"title": "Medium-size application development",
+				"description": "This is a description in detail of a medium-size application development",
+				"question": "<p>Describe in detail medium-size application development</p>",
+				"answer": "<p></p>"
 			},
 			{
-				"title": "standard array algorithm",
-				"description": "this is a description",
-				"question": "<p>describe in detail standard array algorithm</p>",
-				"answer": "<p>A standard array</p>
-									<p>This is a C-Style array
-									'<code><font color='blue'>int</font> a[10]</code>'<br></p>"
+				"title": "Standard array algorithm",
+				"description": "This is a description in detail of a standard array algorithm",
+				"question": "<p>Describe in detail standard array algorithm</p>",
+				"answer": "<p>A standard array is a data structure consisting of a
+									collection of elements, each one identified by at least one
+									index or key. A arrat is positioned so each element can be
+									computed fron its index tuple by a mathematical formula</p>
+									<p>This is a C-Style array <br>
+									<code><font color='blue'>int</font> arr[10]</code><br></p>"
 			},
 			{
-				"title": "file handling algorithm",
-				"description": "this is a description",
-				"question": "<p>describe in detail file handling algorithm</p>",
-				"answer": "<p>This is a answer</p>"
+				"title": "File handling algorithm",
+				"description": "This is a description in detail of a file handling algorithm",
+				"question": "<p>Describe in detail file handling algorithm</p>",
+				"answer": "<p>Files store information for many purposes it represents a
+									sequence of bytes on a disk where the group of related data is
+									stored. In the C programming language it can handle files as
+									data binary files and Stream oriented data like text files.</p>
+									<p>This is writing text to a file in C++ <br>
+									<code><font color='blue'>ofstream</font> file(\"textFile.txt\");<br>
+									file << \"This is some text\";<br>
+									file.close();
+									</code><br></p>"
 			},
 			{
-				"title": "user-defined data structures ",
-				"description": "this is a description",
-				"question": "describe in detail user-defined data structures",
-				"answer": "This is a answer"
+				"title": "User-defined data structures",
+				"description": "This is a description in detail of user-defined data structures",
+				"question": "<p>Describe in detail user-defined data structures</p>",
+				"answer": "<p>Data structures is a heterogeneous container object whose
+									elements do not have to be of the same type. A user-defined data
+									structure has fixed set of feilds defined by the user.</p>
+									<p>This is a user-defined data struct in C++ <br>
+									<code><font color='blue'>struct</font> product<br>
+									{<br>
+									..<font color='blue'>int</font> weight;<br>
+									..<font color='blue'>double</font> price;<br>
+									}<br>
+									</code><br></p>"
 			},
 			{
-				"title": "describe two development methodologies and their application",
-				"description": "this is a description",
-				"question": "describe two development methodologies and their application",
-				"answer": "This is a answer"
+				"title": "Describe two development methodologies and their application",
+				"description": "This is a description in detail of two development methodologies and their application",
+				"question": "<p>Describe two development methodologies and their application</p>",
+				"answer": "<p>The Waterfall model which is the classical approach, is a
+									rigid and linear method. Distinct goals for each phase of development
+									where after earch phase has completed the next one starts and there
+									is no turning back. Waterfall model is more applicable where the
+									project is small.</p>
+									<p>The Spiral model focuses on early Identification and
+									reduction of project risks. Spiral project starts on small scale
+									which after exploring and handling risks then decides whether
+									to take the next step in the project. Spiral model is more
+									applicable where the project is large.</p>"
 			},
 			{
-				"title": "outline the principles of language development",
-				"description": "this is a description",
-				"question": "outline the principles of language development.",
-				"answer": "This is a answer"
+				"title": "Outline the principles of language development",
+				"description": "This is a description in detail of principles of language development",
+				"question": "<p>Outline the principles of language development</p>",
+				"answer": "<p>Outline of the principles of language development:</p>
+									<p>Principle 1: <b>Testing</b></p>
+									<p>The testing of a piece of software if Principle to programming
+									development, even if you think there if no way the piece of code
+									(No matter how small) cannot break, think again. The smallest error
+									in a large system can produce catastrophic problems even ones that
+									are hard to detect unless properly tested.</p>
+									<p>Principle 2: <b>Keep it simple, Stupid! (KISS)</b></p>
+									<p>A design should be as simple as possible, but no simpler.
+									Usually the more elegant a design, the simpler it is. It takes
+									alot of work and iterations to simplify but the payoff is software
+									that is less error-prone and maintainable.
+									</p>
+									<p>Principle 3: <b>Maintain the Vision</b></p>
+									<p>A clear and uncompromising vision of a software system
+									enforces compliance and helps ensure that the software project
+									turns out successfully. Without vision and compromising results
+									in patchwork system with conflicting designs.</p>"
 			},
 			{
-				"title": "outline the basic principles of project management",
-				"description": "this is a description",
-				"question": "outline the basic principles of project management.",
-				"answer": "This is a answer"
+				"title": "Outline the basic principles of project management",
+				"description": "This is a description in detail of basic principles of project management",
+				"question": "<p>Outline the basic principles of project management</p>",
+				"answer": "<p>The basic principles of project management are as follows:</p>
+									<ul>
+										<li><b>Project Structure: </b>Revolves around three main
+										parameters. Project Goal which is what has to be done.
+										Project Timeline and Order which is a visualized start and end
+										point of the project with all other packages.
+										Project Milestones which are the certain phases of your project.</li>
+										<li><b>Definition Phase: </b> Without a clear definition the
+										project can go horribly wrong.</li>
+										<li><b>Transparency About the Project Status: </b>Project
+										manager should keep track of project and give short reports of
+										project status to higher ups.</li>
+										<li><b>Risk Recognition: </b>Identify risks early on to nip
+										negative developments.</li>
+										<li><b>Managing Project Disturbances: </b>Develop strategies
+										to avoid or negate risks when possible.</li>
+										<li><b>Responsibility Of The Project Manager: </b>Project
+										manager develops the project plan with the team, secure acceptance
+										and approval of deliverables from the Project Sponsor and
+										Stakeholders.</li>
+									</ul>"
 			},
 			{
-				"title": "describe the key features of the software development life cycle (SDLC)",
-				"description": "this is a description",
-				"question": "describe the key features of the software development life cycle (SDLC)",
-				"answer": "This is a answer"
+				"title": "Key features of the software development life cycle (SDLC)",
+				"description": "This is a description in detail of the key features of the software development life cycle (SDLC)",
+				"question": "<p>Describe the key features of the software development life cycle (SDLC)</p>",
+				"answer": "<p>The key features are as follows:</p>
+									<ul>
+										<li>Each phase of the life cycle has its own process that
+										feeds into the next phase.</li>
+										<li>When information becomes more available phases can overlap
+										as previous phases are revisted.</li>
+										<li>Iterative risk management system where as the project moves
+										onto completion it increasingly becomes more developed.</li>
+									</ul>"
 			},
 			{
-				"title": "describe the importance of software specifications",
-				"description": "this is a description",
-				"question": "describe the importance of software specifications",
-				"answer": "This is a answer"
+				"title": "Importance of software specifications",
+				"description": "This is a description in detail of the importance of software specifications",
+				"question": "<p>Describe the importance of software specifications</p>",
+				"answer": "<p>The software Specification is a blueprint of what the client
+									wants. Failure of producing a software specifications results
+									in inadequatly producing the product that the client needs,
+									and include unnecessary features. Inflating the cost of the
+									project.</p>"
 			},
 			{
-				"title": "identify the methods and importance of version control",
-				"description": "this is a description",
-				"question": "identify the methods and importance of version control",
-				"answer": "This is a answer"
+				"title": "Identify the methods and importance of version control",
+				"description": "This is a description in detail of the methods and importance of version control",
+				"question": "<p>Identify the methods and importance of version control</p>",
+				"answer": "<p>Version control is important for the ability to track each
+									change as it was made, and to reverse any changes made. A method
+									of version control is having a repository where and push,
+									aync and pull files from it, you can do this through services
+									such as GitHub.</p>"
 			}
 		]
 	}
