@@ -481,6 +481,7 @@ void Knowledge::clearQuestionViews()
 	ui.questionNumberOutOfLineEdit->clear();
 	ui.quesitonTextEdit->clear();
 	ui.answerTextEdit->clear();
+
 }
 
 void Knowledge::closeEvent(QCloseEvent* event)
