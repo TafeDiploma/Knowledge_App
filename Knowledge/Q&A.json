@@ -42,7 +42,7 @@
 									data binary files and Stream oriented data like text files.</p>
 									<p>This is writing text to a file in C++ <br>
 									<code><font color='blue'>ofstream</font> file(\"textFile.txt\");<br>
-									file << \"This is some text\";<br>
+									file &lt;&lt; \"This is some text\";<br>
 									file.close();
 									</code><br></p>"
 			},
@@ -56,8 +56,8 @@
 									<p>This is a user-defined data struct in C++ <br>
 									<code><font color='blue'>struct</font> product<br>
 									{<br>
-									..<font color='blue'>int</font> weight;<br>
-									..<font color='blue'>double</font> price;<br>
+									&nbsp;&nbsp;<font color='blue'>int</font> weight;<br>
+									&nbsp;&nbsp;<font color='blue'>double</font> price;<br>
 									}<br>
 									</code><br></p>"
 			},

@@ -3,6 +3,19 @@
 #include <QDebug>
 #include <QJsonObject>
 #include <QString>
+#include <QFile>
+#include <QVector>
+#include <QException>
+#include <fstream>
+#include <ostream>
+#include <string>
+#include <sys/stat.h>
+#include <string>
+#include <vector>
+#include <QChar>
+#include <QDateTime>
+#include <chrono>
+#include <ctime>
 
 class utils
 {
@@ -88,12 +101,27 @@ public:
 	static QString readBinaryFile(const QString& dir);
 
 	/// <summary>
+	/// Method to read binary file from location directory passed.
+	/// </summary>
+	/// <param name="dir"></param>
+	/// <returns>All text within file as string</returns>
+	static std::string readBinaryFileStd(const std::string& dir);
+
+	/// <summary>
 	/// Method to write binary file from location directory passed.
 	/// </summary>
 	/// <param name="dir"></param>
 	/// <param name="text"></param>
 	/// <returns>Bool if error produced.</returns>
 	static bool writeBinaryFile(const QString& dir, const QString& text);
+
+	/// <summary>
+	/// Method to write binary file from location directory passed.
+	/// </summary>
+	/// <param name="dir"></param>
+	/// <param name="text"></param>
+	/// <returns>Bool if error produced.</returns>
+	static bool writeBinaryFileStd(const std::string& dir, const std::string& text);
 
 	/// <summary>
 	/// Method to access file randomly.
@@ -127,7 +155,39 @@ public:
 	/// <param name="hashIndex"></param>
 	/// <returns></returns>
 	static CompQJsonObjectBy compareQJsonObjectBy(const QString& hashIndex);
-	
+
+	/// <summary>
+	/// Get current date/time, format is YYYY-MM-DD.HH:mm:ss.
+	/// </summary>
+	/// <returns></returns>
+	static tm currentDateTime();
+
+	/// <summary>
+	/// Method to log errors to file by date.
+	/// </summary>
+	/// <param name="des"></param>
+	/// <param name="ex"></param>
+	static void LogError(const std::string& des, const std::exception& ex);
+
+	/// <summary>
+	/// Method to log errors to file by date.
+	/// </summary>
+	/// <param name="ex"></param>
+	static void LogError(const std::exception& ex);
+
+	/// <summary>
+	/// Method to log errors to file by date.
+	/// </summary>
+	/// <param name="des"></param>
+	/// <param name="ex"></param>
+	static void QLogError(const QString& des, const QException& ex);
+
+	/// <summary>
+	/// Method to log errors to file by date.
+	/// </summary>
+	/// <param name="ex"></param>
+	static void QLogError(const QException& ex);
+
 	/// <summary>
 	/// Quicksort algorithm method.
 	/// </summary>
