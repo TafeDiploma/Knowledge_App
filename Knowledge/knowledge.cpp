@@ -87,8 +87,6 @@ Knowledge::Knowledge(QWidget *parent)
 	char* dynCharArr = new char[10];
 	dynCharArr[9] = '\0';
 	delete[] dynCharArr;
-	
-	utils::QLogError(QException());
 }
 
 void Knowledge::on_batchListView_SelectionChanged(const QItemSelection& selection)

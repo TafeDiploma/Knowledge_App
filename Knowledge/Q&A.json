@@ -19,7 +19,11 @@
 				"title": "Medium-size application development",
 				"description": "This is a description in detail of a medium-size application development",
 				"question": "<p>Describe in detail medium-size application development</p>",
-				"answer": "<p></p>"
+				"answer": "<p>Application development is process of the development of computer 
+									programming, bug testing, and documenting resulting in a software
+									product. The average size of a application development 
+									team is 5 - 7 people.
+									</p>"
 			},
 			{
 				"title": "Standard array algorithm",
