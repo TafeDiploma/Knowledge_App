@@ -493,7 +493,7 @@ void Knowledge::closeEvent(QCloseEvent* event)
 		"Are you sure?",
 		QMessageBox::Warning,
 		QMessageBox::No | QMessageBox::Default,
-		QMessageBox::Yes | QMessageBox::Escape,
+		QMessageBox::Yes,
 		QMessageBox::NoButton);
 
 	if (msgBox.exec() == QMessageBox::Yes)

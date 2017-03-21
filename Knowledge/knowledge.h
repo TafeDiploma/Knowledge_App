@@ -1,9 +1,10 @@
 #ifndef KNOWLEDGE_H
 #define KNOWLEDGE_H
 
-#include <QtWidgets/QMainWindow>
 #include "ui_knowledge.h"
 #include "utils.h"
+
+#include <QtWidgets/QMainWindow>
 
 #include <QMessageBox>
 #include <QJsonDocument>
