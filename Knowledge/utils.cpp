@@ -32,7 +32,7 @@ QString utils::readFile(const QString& directory)
 		val = file.readAll();
 		file.close();
 	}
-	catch (QException::exception ex)
+	catch (const QException::exception& ex)
 	{
 		qDebug() << ex.what();
 	}
